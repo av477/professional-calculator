@@ -1,4 +1,4 @@
-# Interactive Calculator
+# Professional Calculator
 
 A Python command-line calculator with a read-evaluate-print loop (REPL), four arithmetic operations, and session-only calculation history.
 

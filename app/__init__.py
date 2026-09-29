@@ -1,1 +1,1 @@
-"""Application packages for the interactive calculator."""
+"""Application packages for the Professional Calculator."""
