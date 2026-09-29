@@ -12,14 +12,22 @@ from app.operation import (
 
 @dataclass(frozen=True)
 class Calculation:
-    """A calculation request that can be executed and retained in session history."""
+    """Immutable calculation request using a canonical operation name.
+
+    Instances are created by ``CalculationFactory`` and can be retained in the
+    current REPL session's history.
+    """
 
     first_number: float
     operation: str
     second_number: float
 
     def calculate(self) -> float:
-        """Execute this calculation and return its result."""
+        """Execute the stored operation and return its numeric result.
+
+        Raises:
+            ZeroDivisionError: If the operation is division and the divisor is zero.
+        """
         return OPERATIONS[self.operation](self.first_number, self.second_number)
 
     @property
@@ -37,7 +45,13 @@ class CalculationFactory:
         operation: str,
         second_number: float,
     ) -> Calculation:
-        """Validate an operation and construct its calculation instance."""
+        """Normalize an operation alias and construct a calculation instance.
+
+        The operation may be a canonical name, supported alias, or symbol.
+
+        Raises:
+            ValueError: If the operation is not supported.
+        """
         normalized_operation = operation.strip().lower()
         if normalized_operation not in VALID_OPERATIONS:
             raise ValueError(INVALID_OPERATION_MESSAGE)
@@ -53,7 +67,11 @@ def calculate(first_number: float, operation: str, second_number: float) -> floa
 
 
 def evaluate_expression(expression: str) -> float:
-    """Evaluate an arithmetic expression using Python's evaluator."""
+    """Evaluate an expression and return its result as a float.
+
+    Raises:
+        ValueError: If evaluation fails or the expression returns a non-numeric value.
+    """
     try:
         result = eval(expression, {"__builtins__": {}}, {})
     except Exception as exc:
