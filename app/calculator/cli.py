@@ -1,4 +1,4 @@
-"""Command-line entry point for the interactive calculator."""
+"""Command-line entry point for the Professional Calculator."""
 
 from .calculator import run_interactive
 

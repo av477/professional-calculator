@@ -1,4 +1,4 @@
-"""Interactive calculator command loop."""
+"""Professional Calculator command loop."""
 
 from __future__ import annotations
 
@@ -74,9 +74,9 @@ def _print_history(history: list[Calculation]) -> None:
 
 
 def run_interactive() -> None:
-    """Run a simple interactive calculator loop in the terminal."""
+    """Run a simple Professional Calculator loop in the terminal."""
     history: list[Calculation] = []
-    print("-------------------- Interactive Calculator --------------------")
+    print("-------------------- Professional Calculator --------------------")
     print("Available operations: " + ", ".join(OPERATION_ALIASES))
     print("----------------------------------------------------------------")
 

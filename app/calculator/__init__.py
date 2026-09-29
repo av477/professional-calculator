@@ -1,4 +1,4 @@
-"""Interactive calculator interface and public operations."""
+"""Professional Calculator interface and public operations."""
 
 from app.calculation import Calculation, CalculationFactory, calculate, evaluate_expression
 from app.operation import add, divide, multiply, subtract
